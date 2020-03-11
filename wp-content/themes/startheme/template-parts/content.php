@@ -51,7 +51,7 @@ $proprietes = get_posts(array(
 
 </article>
 
-<?php get_sidebar('nos_proprietes')?>
+
 
 
 
