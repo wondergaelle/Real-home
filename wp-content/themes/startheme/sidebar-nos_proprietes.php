@@ -15,47 +15,49 @@ $lastproprietes = get_posts(array(
 ?>
 
 
-<section class="sidebar-lastnews bg-light">
-    <div class="col-lg-12 offset-md-1">
-        <header class="sidebar-header d-flex flex-wrap justify-content-between align-items-start">
-            <h2 class="sidebar-title">
-                <?php _e('Nos propriétés', 'startheme') ?>
-            </h2>
-
-        </header>
-        <?php if ($lastproprietes) : ?>
-            <div class="card-group">
-                <?php foreach ($lastproprietes as $post):
-                    setup_postdata($post) ?>
-
-                    <article <?php post_class() ?>>
-
-                        <figure class="row">
+<?php if ($lastproprietes) : ?>
+    <div class="container">
+        <div class="row">
+            <?php foreach ($lastproprietes as $post) :
+                setup_postdata($post) ?>
+                <div class="card" style="width: 17rem;">
+                    <div class="card-group">
+                        <article <?php post_class() ?>>
                             <a href="<?php the_permalink(); ?>" title="<?php _e('Lire la suite', 'startheme') ?>">
-                                <?php the_post_thumbnail('thumb-medium', array('class' => 'img-fluid card-img-top')); ?>
+                                <?php the_post_thumbnail('thumb-medium', array('class' => 'card-img-top')); ?>
                             </a>
-                        </figure>
-
-                        <div class="card-body row">
-                            <h3 class="card-title h4">
-                                <a href="<?php the_permalink(); ?>" title="<?php _e('Lire la suite', 'startheme') ?>">
-                                    <?php the_title(); ?>
-                                </a>
-                            </h3>
-                            <?php the_excerpt() ?>
-                        </div>
-                    </article>
-                <?php endforeach;
-                wp_reset_postdata() ?>
-
-            </div>
-        <?php endif; ?>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center">
+                                    <h3 class="card-title h3 ">
+                                        <a style="color: #E2574C" href="<?php the_permalink(); ?>" title="<?php _e('Lire la suite', 'startheme') ?>">
+                                            <?php the_title(); ?>
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <?php the_field('ville') ?>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <div class="row"><?php the_field('prix') ?><div>€</div>
+                                    </div>
+                                </div>
+                                <?php the_excerpt() ?>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            <?php endforeach;
+            wp_reset_postdata() ?>
+        </div>
+    </div>
+<?php endif; ?>
+</div>
+<div class="container">
+    <div class="d-flex justify-content-center">
         <div>
-            <a href="<?= get_category_link(31) ?>" class="btn btn-outline-primary">
+            <a href="<?= get_post_type_archive_link('nos_proprietes') ?>"style="color: #orange; margin-bottom: 30px; margin-top: 30px;"  class="btn btn-outline-primary">
                 <?php _e('Nos propriétés', 'startheme') ?>
             </a>
         </div>
     </div>
-
-
-</section>
+</div>

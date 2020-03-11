@@ -8,7 +8,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('icone_fonts', '//cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css', false, null);
     wp_enqueue_style('startheme-styles', get_template_directory_uri() . '/dist/css/main.css', false, null);
     wp_enqueue_script('startheme-scripts', get_template_directory_uri() . '/dist/js/main.js', ['jquery'], null, true);
-    wp_localize_script('startheme-scripts', 'WPURLS', array( 'themeURL' => get_template_directory_uri() ));
+    wp_localize_script('startheme-scripts', 'WPURLS', array('themeURL' => get_template_directory_uri()));
 }, 100);
 
 
@@ -98,5 +98,29 @@ add_filter('get_the_archive_title', function ($title) {
         $title = single_term_title('', false);
     }
     return $title;
+});
+
+/**
+ * Filter main query for spots archive page
+ */
+
+add_action('pre_get_posts', function ($query) {
+
+    if (is_admin()) return;
+    if (!$query->is_main_query()) return;
+
+    if (is_post_type_archive('nos_proprietes')) {
+        if (isset($_GET['vil'])) {
+            $query->set('tax_query',
+                array(
+                    array(
+                        'taxonomy' => 'ville',
+                        'field' => 'term_id',
+                        'terms' => $_GET['vil']
+                    ))
+            );
+        }
+    }
+    return;
 });
 
