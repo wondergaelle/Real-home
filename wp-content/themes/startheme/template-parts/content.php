@@ -10,46 +10,37 @@
  */
 
 ?>
+<div class="container">
 
-<article <?php post_class(); ?>>
-    <div class="container py-5">
-        <h1 class="page-title entry-title"><?php the_title(); ?></h1>
-        <div class="row justify-content-center">
+    <div class="row">
+
+        <article <?php post_class('col-md-8'); ?>>
+            <h1 class="page-title entry-title"><?php the_title(); ?></h1>
+            <?php the_post_thumbnail('large', array('class' => 'img-fluid')); ?>
             <?php the_content(); ?>
-            <div style="padding-bottom: 30px " class="container border-bottom">
-                <div class="row">
-                    <?php if (has_post_thumbnail()) : ?>
-                    <div class="col-md-8">
-                        <?php the_post_thumbnail('large', array('class' => 'img-fluid')); ?>
-                    </div>
-                    <div class="col-md-4">
-                        <div style="margin-bottom: 50px; font-size:30px; color: #E2574C ;" class="row"> <img width="28px" src="https://image.flaticon.com/icons/png/512/40/40202.png" alt=""><div style="margin-left: 30px ;"><?php the_field('prix')?></div><div>€</div>
-                        </div>
-                        <div  class="row border-bottom border-top">
-                            <div class="col-md-6">
-                                <div class="row">Ville :</div>
-                                <div class="row">Nbr de pieces :</div>
-                                <div class="row">Surface :</div>
-                                <div class="row">Infos :</div>
-                                <div class="row">Infos :</div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="row"> <?php the_field('ville') ?></div>
-                                <div class="row"> <?php the_field('nbre_de_pieces') ?></div>
-                                <div class="row">  <?php the_field('surface') ?><div>m²</div></div>
-                                <div class="row"><?php the_field('infos-1') ?></div>
-                                <div class="row"><?php the_field('infos-2') ?></div>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 40px;  margin-bottom: 40px;">
-                            <?php the_field("description") ?>
-                        </div>
-                    </div>
-                </div>
-                <?php endif; ?>
-            </div><!-- .row -->
-        </div><!-- .container -->
-</article>
+    </article>
+
+
+    <aside class="col aside-categories mb-4">
+        <ul class="bg-light p-3">
+            <?php wp_list_categories(array(
+                'child_of' => 4,
+                'title_li' => '<h3>' . __('Catégories', 'startheme') . '</h3>',
+            )) ?>
+        </ul>
+        <ul class="bg-light p-3">
+            <h3>Archives</h3>
+            <?php wp_get_archives(array(
+                'type=yearly',
+                'title_li' => '<h3>' . __('Archives', 'startheme') . '</h3>'
+            )) ?>
+        </ul>
+
+    </aside>
+
+    </div>
+
+</div>
 
 
 

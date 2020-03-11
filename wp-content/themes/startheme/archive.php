@@ -40,8 +40,6 @@ get_header();
                                 )) ?>
                             </ul>
 
-
-
                         </aside>
 
                         <div class="col-md-8 col-lg-9">
