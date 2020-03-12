@@ -8,7 +8,14 @@
  * @subpackage Startheme
  * @since 1.0.0
  */
+$exclude = is_front_page() ? get_option( 'sticky_posts' ) : [get_the_ID()];
+$lastnews = get_posts(array(
+    'numberposts' => 3,
+    'category_name' => 'actualites',
+    'orderby' => 'rand',
+    'exclude'=> $exclude
 
+));
 ?>
 <div class="container">
 
@@ -36,7 +43,34 @@
             )) ?>
         </ul>
 
+        <?php if ($lastnews): ?>
+
+            <?php foreach ($lastnews as $post):
+                setup_postdata($post) ?>
+
+                <article <?php post_class('card border-0') ?>>
+
+                    <div class="card-body">
+                        <h3 class="card-title h4">
+                            <a href="<?php the_permalink(); ?>" title="<?php _e('Lire la suite', 'startheme') ?>">
+                                <?php the_title(); ?>
+                            </a>
+                        </h3>
+                        <?php the_excerpt() ?>
+                    </div>
+                </article>
+            <?php endforeach;
+            wp_reset_postdata() ?>
+
+
+        <?php endif; ?>
+
     </aside>
+
+
+
+
+
 
     </div>
 
