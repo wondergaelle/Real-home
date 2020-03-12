@@ -1,0 +1,32 @@
+.aside-categories, h3 {
+  color: $gris-fonce;
+}
+ul {
+  color: $gris-clair;
+}
+
+h2, a {
+  font-family: "Raleway";
+  color: $orange;
+  font-size: 1.125rem;
+  font-weight: bold;
+  text-transform: none;
+}
+
+h4 {
+  font-family: "Playfair Display";
+  color: $gris-moyen;
+  font-size: 1.125rem;
+  font-weight: bold;
+  text-transform: none;
+}
+
+li, a:hover {
+  text-decoration: none;
+  color: #000;
+}
+
+h2, a{
+  color: $orange;
+}
+

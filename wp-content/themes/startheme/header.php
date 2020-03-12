@@ -18,7 +18,7 @@
 
 <body <?php body_class(); ?>>
 
-  <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top main-navbar">
+  <nav class="navbar navbar-expand-md  bg-white sticky-top main-navbar">
 
     <div class="container">
 
@@ -47,6 +47,8 @@
 
         wp_nav_menu(array(
             'theme_location' => 'social',
+            'container'       => 'div',
+            'container_class' => 'main-menu-wrapper ml-auto',
             'menu_class' => 'navbar-nav social-menu',
             'fallback_cb' => 'WP_Bootstrap_Navwalker::fallback',
             'walker' => new WP_Bootstrap_Navwalker(),

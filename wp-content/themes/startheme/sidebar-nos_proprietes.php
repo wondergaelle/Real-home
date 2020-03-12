@@ -5,7 +5,7 @@
  */
 
 $lastproprietes = get_posts(array(
-    'numberposts' => 4,
+    'numberposts' => 6,
     'post_type' => 'nos_proprietes',
     'orderby' => 'rand',
     'exclude' => get_the_id()
@@ -16,14 +16,14 @@ $lastproprietes = get_posts(array(
 
 
 <?php if ($lastproprietes) : ?>
-    <div class="container">
+    <div class="col-md-10 offset-2">
         <div class="row">
             <?php foreach ($lastproprietes as $post) :
                 setup_postdata($post) ?>
-                <div class="card" style="width: 17rem;">
-                    <div class="card-group">
+                <div class="card" style="width: 22rem;">
+                    <div class="card-group card-figure">
                         <article <?php post_class() ?>>
-                            <a href="<?php the_permalink(); ?>" title="<?php _e('Lire la suite', 'startheme') ?>">
+                            <a class="card-figure" href="<?php the_permalink(); ?> " title="<?php _e('Lire la suite', 'startheme') ?>">
                                 <?php the_post_thumbnail('thumb-medium', array('class' => 'card-img-top')); ?>
                             </a>
                             <div class="card-body">
@@ -55,7 +55,7 @@ $lastproprietes = get_posts(array(
 <div class="container">
     <div class="d-flex justify-content-center">
         <div>
-            <a href="<?= get_post_type_archive_link('nos_proprietes') ?>"style="color: #orange; margin-bottom: 30px; margin-top: 30px;"  class="btn btn-outline-primary">
+            <a href="<?= get_post_type_archive_link('nos_proprietes') ?>"style="color: #orange; margin-bottom: 30px; margin-top: 30px;"  class="btn btn-outline-danger">
                 <?php _e('Nos propriétés', 'startheme') ?>
             </a>
         </div>

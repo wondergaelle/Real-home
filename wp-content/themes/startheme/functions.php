@@ -79,7 +79,7 @@ add_filter('excerpt_length', function ($length) {
 }, 999);
 
 add_filter('excerpt_more', function () {
-    return '&hellip;<div class="more-link"><a class="btn btn-outline-primary" href="' . get_permalink() . '" >' . __('Lire la suite', 'startheme') . '</a></div>';
+    return '&hellip;<div class="more-link"><a class="btn btn-outline-danger" href="' . get_permalink() . '" >' . __('Lire la suite', 'startheme') . '</a></div>';
 });
 
 /**

@@ -19,9 +19,7 @@ $vil_get = isset($_GET['vil']) ? $_GET['vil'] : [];
 get_header();
 ?>
 
-
     <main>
-
 
             <section class="archive-section container py-5">
 
@@ -49,7 +47,7 @@ get_header();
 
                         <?php endforeach; ?>
 
-                        <button class="btn btn-outline-primary ml-auto"
+                        <button class="btn btn-outline-danger ml-auto"
                                 type="submit"><?php _e('Filtrer', 'startheme') ?></button>
                         </form>
                     </div><!-- .form-group -->

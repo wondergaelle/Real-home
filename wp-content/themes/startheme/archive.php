@@ -8,31 +8,28 @@
  * @since 1.0.0
  *
  */
-
+$news = get_posts(array(
+    'numberposts' => 3,
+    'category_name' => 'actualites',
+    'exclude' => $exclude
+));
 get_header();
 ?>
 
-    <main>
-
+    <main class="archive">
         <?php if (have_posts()) : ?>
-
-            <section class="archive-section">
-
-
-
+            <section class="archive-section container py-5">
+                <h1 class="page-title text-center">Nos actualités</h1>
                 <div class="container py-5">
-                    <div class="title-actus">
-                    <h1 class="page-title"><?php the_archive_title(''); ?></h1>
-                    </div>
                     <div class="row flex-md-row-reverse">
                         <aside class="col aside-categories mb-4">
-                            <ul class="bg-light p-3">
+                            <ul class="p-3">
                                 <?php wp_list_categories(array(
                                     'child_of' => 4,
                                     'title_li' => '<h3>' . __('Catégories', 'startheme') . '</h3>',
                                 )) ?>
                             </ul>
-                            <ul class="bg-light p-3">
+                            <ul class=" p-3">
                                 <h3>Archives</h3>
                                 <?php wp_get_archives(array(
                                     'type=yearly',
@@ -41,29 +38,23 @@ get_header();
                             </ul>
 
                         </aside>
-
                         <div class="col-md-8 col-lg-9">
-                            <?php while (have_posts()) : the_post(); ?>
+                            <div class="py-5 container-fluid">
+                                <?php while (have_posts()) :
+                                    the_post(); ?>
+                                    <div class="py-4">
 
+                                        <?php get_template_part('template-parts/content-archive', get_post_type()); ?>
+                                    </div>
+                                <?php endwhile; ?>
+                            </div>
 
-                                <?php get_template_part('template-parts/content-archive', get_post_type()); ?>
-
-
-                            <?php endwhile; ?>
                             <?php the_posts_pagination(); ?>
+
                         </div>
-
-
-                    </div><!-- .row -->
-                </div><!-- .container -->
-            </section>
-
-        <?php else : ?>
-
-            <?php get_template_part('template-parts/content', 'none'); ?>
-
+                    </div><!-- .row flex-md-row-reverse -->
+                </div> <!-- .container py-5 -->
+            </section><!-- .archive-section -->
         <?php endif; ?>
-
-    </main>
-
-<?php get_footer() ?>
+    </main><!-- .archive -->
+<?php get_footer(); ?>

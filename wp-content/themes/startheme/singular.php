@@ -9,7 +9,8 @@
  * @since 1.0.0
  *
  */
-
+$latitude = get_field('latitude');
+$longitude = get_field('longitude');
 get_header();
 ?>
 

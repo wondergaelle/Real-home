@@ -15,15 +15,15 @@ $ville = get_the_terms(get_the_ID(), 'ville');
 <div class="card" style="width: 22rem;">
     <article <?php post_class(); ?>>
         <?php if (has_post_thumbnail()) : ?>
-            <a class="link-image" href="<?php the_permalink(); ?>" title="<?php _e('Lire la suite', 'startheme') ?>"><?php the_post_thumbnail('thumb-medium', array('class' => 'img-fluid')); ?></a>
+            <a class="card-figure" href="<?php the_permalink(); ?>" title="<?php _e('Lire la suite', 'startheme') ?>"><?php the_post_thumbnail('thumb-medium', array('class' => 'img-fluid')); ?></a>
         <?php endif; ?>
         <div class="card-body d-flex justify-content-center">
             <h2 class="  entry-title card-title "><a href="<?php the_permalink(); ?>" title="<?php _e('Lire la suite', 'startheme') ?>"><?php the_title(); ?></a></h2>
         </div>
-        <div class="d-flex justify-content-center">
+        <h4 class="title-h4 d-flex justify-content-center">
            <?= $ville[0]->name; ?>
 
-        </div>
+        </h4>
         <div>
             <div class="row d-flex justify-content-center"> <?php the_field('prix') ?><p>-€ </p>
             </div>
